@@ -1,174 +1,123 @@
-# BookReview - A Book Review Application
+# BookReview
 
-BookReview is a full-stack web application for browsing, reviewing, and discovering books. Users can create accounts, browse books, leave reviews, and manage their profile.
+A web application for reviewing and discovering books.
 
-## Features
+## Overview
 
-- User authentication (signup, login, profile management)
-- Browse and search for books
-- Filter books by genre and rating
-- View book details and reviews
-- Add reviews to books
-- User profile with review history
-- Featured books carousel on the homepage
+BookReview is a full-stack web application that allows users to browse books, read and write reviews, and manage their reading lists. The application is built with a Node.js backend API and a Next.js frontend.
 
 ## Tech Stack
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (with Mongoose ORM)
+- JWT Authentication
 
 ### Frontend
 - Next.js 14
 - React
 - TypeScript
 - Tailwind CSS
-- Shadcn UI components
+- Shadcn UI Components
 
-### Backend
-- Node.js
-- Express
-- MongoDB with Mongoose
-- JWT Authentication
+## Project Structure
 
-## Setup Instructions
+```
+├── backend/               # Node.js Express API
+│   ├── config/            # Configuration files
+│   ├── middleware/        # Custom middleware
+│   ├── models/            # Mongoose data models
+│   ├── routes/            # API routes
+│   └── server.js          # Main server entry point
+│
+└── frontend/              # Next.js client application
+    ├── app/               # Next.js app router
+    ├── components/        # React components
+    ├── contexts/          # React context providers
+    ├── hooks/             # Custom React hooks
+    ├── lib/               # Utility functions
+    └── public/            # Static assets
+```
+
+## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
-- MongoDB (local or Atlas)
-- Git
+- MongoDB instance
+- npm or pnpm
 
 ### Installation
 
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/book-review.git
-cd book-review
-```
+1. Clone the repository:
+   ```
+   git clone https://github.com/sunil-patil12000/BookReview
+   cd BookReview
+   ```
 
-2. Set up environment variables
-Create a `.env` file in the backend directory:
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/bookReview
-JWT_SECRET=your_jwt_secret_key
-```
+2. Install backend dependencies:
+   ```
+   cd backend
+   npm install
+   ```
 
-3. Install backend dependencies
-```bash
-cd backend
-npm install
-```
+3. Install frontend dependencies:
+   ```
+   cd frontend
+   npm install
+   ```
 
-4. Install frontend dependencies
-```bash
-cd ../frontend
-npm install
-```
+4. Create environment files:
 
-5. Seed the database
-```bash
-cd ../backend
-npm run data:import
-```
+   For backend (`.env` in backend folder):
+   ```
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/bookreview
+   JWT_SECRET=your_jwt_secret
+   ```
 
-6. Start the development servers
+   For frontend (`.env.local` in frontend folder):
+   ```
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api
+   ```
 
-In one terminal:
-```bash
-cd backend
-npm run dev
-```
+### Running the Application
 
-In another terminal:
-```bash
-cd frontend
-npm run dev
-```
+1. Start the backend server:
+   ```
+   cd backend
+   npm run dev
+   ```
 
-7. Access the application
-- Frontend: [http://localhost:3000](http://localhost:3000)
-- Backend API: [http://localhost:5000](http://localhost:5000)
+2. Start the frontend development server:
+   ```
+   cd frontend
+   npm run dev
+   ```
 
-## API Endpoints
+3. Access the application at `http://localhost:3000`
 
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login existing user
+## Features
 
-### Books
-- `GET /api/books` - Get all books (with optional filters)
-- `GET /api/books/:id` - Get book by ID
-- `POST /api/books/:id/reviews` - Add a review to a book (requires authentication)
+- User authentication (signup, login, profile management)
+- Browse and search books
+- View detailed book information
+- Read and write book reviews
+- Rate books with a star rating system
+- Featured books carousel
+- Responsive design for mobile and desktop
 
-### Users
-- `GET /api/users/profile` - Get current user profile (requires authentication)
-- `PUT /api/users/profile` - Update user profile (requires authentication)
-- `GET /api/users/reviews` - Get all reviews by the current user (requires authentication)
+## License
 
-## Documentation
-
-- [Getting Started Guide](./GETTING_STARTED.md) - Detailed instructions for setup and usage
-- [Deployment Guide](./DEPLOYMENT.md) - Instructions for deploying to production
-- API Documentation - Available in the [Getting Started Guide](./GETTING_STARTED.md#api-documentation)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## GitHub Repository
-
-To create your GitHub repository:
-
-1. Create a new repository on GitHub
-2. Push your local repository to GitHub:
-```bash
-git remote add origin https://github.com/yourusername/book-review.git
-git branch -M main
-git push -u origin main
-```
-
-3. Your project will be available at: `https://github.com/yourusername/book-review`
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Book cover images and data are placeholders for demonstration purposes
-- UI components from [shadcn/ui](https://ui.shadcn.com/)
-
-## Deployment Options
-
-### Vercel (Frontend)
-The Next.js frontend can be easily deployed on Vercel:
-
-1. Push your code to GitHub
-2. Connect your repository in Vercel
-3. Configure environment variables
-4. Deploy
-
-### Render or Heroku (Backend)
-The Express backend can be deployed on platforms like Render or Heroku:
-
-1. Push your code to GitHub
-2. Create a new web service in Render/Heroku
-3. Set the root directory to `/backend`
-4. Add environment variables
-5. Deploy
-
-### MongoDB Atlas (Database)
-For the database, MongoDB Atlas offers a free tier:
-
-1. Create a cluster in MongoDB Atlas
-2. Set up network access and database users
-3. Get your connection string and update your backend .env file
-
-## Verification
-
-Run the installation verification script to check if everything is set up correctly:
-
-```bash
-node verify-install.js
-```
